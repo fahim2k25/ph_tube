@@ -28,4 +28,46 @@ function displayCatagories(arrr) {
 
 }
 
+const loadVideos = () => {
+
+    fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+        .then(response => response.json())
+        .then(data => displayVideos(data.videos));
+
+};
+
+const displayVideos = (arrr2) => {
+    const videoContainer = document.getElementById("video-container");
+
+    arrr2.forEach((video) => {
+        const cardSingle = document.createElement("div");
+        cardSingle.classList.add("card", "bg-base-100", "shadow-sm");
+        cardSingle.innerHTML = `
+        
+  <figure>
+    <img
+      src="${video.thumbnail}" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">${video.title}</h2>
+    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+  </div>
+
+        
+        
+        
+        
+        `;
+        videoContainer.appendChild(cardSingle);
+
+    });
+
+
+};
+
+
+
+
+
 loadCatagories();
+loadVideos();
