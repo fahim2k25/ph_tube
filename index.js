@@ -44,14 +44,31 @@ const displayVideos = (arrr2) => {
         cardSingle.classList.add("card", "bg-base-100", "shadow-sm");
         cardSingle.innerHTML = `
         
-  <figure>
-    <img
-      src="${video.thumbnail}" />
-  </figure>
-  <div class="card-body">
-    <h2 class="card-title">${video.title}</h2>
-    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-  </div>
+                <figure class="relative">
+                        <img class="w-full h-[200px] object-cover" src="${video.thumbnail}" />
+                        <span class="absolute text-white bg-black bottom-2 right-2">${video.others.posted_date} </span>
+                </figure>
+  
+                <div class="card-body flex-row">
+
+                    <div class="avatar">
+                        <div class="w-12 rounded-full">
+                            <img src="${video.authors[0].profile_picture}" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="card-title">${video.title}</h2>
+                        <div class="flex"> 
+                            <p>${video.authors[0].profile_name} <br> ${video.others.views} Views </p>
+                            
+                            <div> <img class="w-4" src="./assets/icons8-verified-48.png" </div>
+                        </div>
+    
+                      
+                    </div>
+
+                 </div>
 
         
         
