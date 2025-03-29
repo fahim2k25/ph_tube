@@ -18,7 +18,7 @@ function displayCatagories(arrr) {
         //Create an Element
         const newBtn = document.createElement("button");
         newBtn.innerText = element.category;
-        newBtn.classList.add("btn", "btn-sm");
+        newBtn.classList.add("btn", "btn-sm", "hover:bg-red-600", "hover:text-white");
 
         //Append that element
         cataCont.appendChild(newBtn);
@@ -52,7 +52,7 @@ const displayVideos = (arrr2) => {
                 <div class="card-body flex-row">
 
                     <div class="avatar">
-                        <div class="w-12 rounded-full">
+                        <div class="w-12 h-12 rounded-full">
                             <img src="${video.authors[0].profile_picture}" />
                         </div>
                     </div>
