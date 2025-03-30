@@ -19,7 +19,8 @@ function displayCatagories(arrr) {
         const newBtn = document.createElement("button");
         newBtn.innerText = element.category;
         newBtn.classList.add("btn", "btn-sm", "hover:bg-red-600", "hover:text-white");
-        newBtn.setAttribute("onclick", `loadCatagoryVideo(${element.category_id})`)
+        newBtn.setAttribute("onclick", `loadCatagoryVideo(${element.category_id})`);
+        newBtn.setAttribute("id", `btn-${element.category_id}`);
         //Append that element
         cataCont.appendChild(newBtn);
     });
@@ -96,10 +97,23 @@ const loadCatagoryVideo = (id) => {
     const filterURL = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
     fetch(filterURL)
         .then(response => response.json())
-        .then((data) => displayVideos(data.category));
+        .then((data) => {
+            removeActivity();
+            const clickedButton = document.getElementById(`btn-${id}`);
+            clickedButton.classList.add("active");
+            displayVideos(data.category);
+        });
 
 };
 
+const removeActivity = () => {
+    const clickedElems = document.getElementsByClassName("active");
 
+    for (let elem of clickedElems) {
+        elem.classList.remove("active");
+    };
 
+};
+
+//FUNCTION called by default while the page reloads
 loadCatagories();
