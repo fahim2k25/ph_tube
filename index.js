@@ -33,7 +33,12 @@ const loadVideos = () => {
 
     fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
         .then(response => response.json())
-        .then(data => displayVideos(data.videos));
+        .then(data => {
+            const oddBtn = document.getElementById("btn-all");
+            removeActivity();
+            oddBtn.classList.add("active");
+            displayVideos(data.videos)
+        });
 
 };
 
