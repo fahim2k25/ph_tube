@@ -19,7 +19,7 @@ function displayCatagories(arrr) {
         const newBtn = document.createElement("button");
         newBtn.innerText = element.category;
         newBtn.classList.add("btn", "btn-sm", "hover:bg-red-600", "hover:text-white");
-
+        newBtn.setAttribute("onclick", `loadCatagoryVideo(${element.category_id})`)
         //Append that element
         cataCont.appendChild(newBtn);
     });
@@ -38,7 +38,7 @@ const loadVideos = () => {
 
 const displayVideos = (arrr2) => {
     const videoContainer = document.getElementById("video-container");
-
+    videoContainer.innerHTML = "";
     arrr2.forEach((video) => {
         const cardSingle = document.createElement("div");
         cardSingle.classList.add("card", "bg-base-100", "shadow-sm");
@@ -82,9 +82,14 @@ const displayVideos = (arrr2) => {
 
 };
 
+const loadCatagoryVideo = (id) => {
+    const filterURL = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
+    fetch(filterURL)
+        .then(response => response.json())
+        .then((data) => displayVideos(data.category));
 
+};
 
 
 
 loadCatagories();
-loadVideos();
