@@ -39,6 +39,16 @@ const loadVideos = () => {
 const displayVideos = (arrr2) => {
     const videoContainer = document.getElementById("video-container");
     videoContainer.innerHTML = "";
+
+    if (arrr2.length === 0) {
+        videoContainer.innerHTML = `
+        <div class="mt-6 col-span-4 flex flex-col items-center py-6">
+            <img class="w-[120px]" src="./assets/Icon.png" alt="no-vdo">
+            <p class="text-2xl font-bold">Oops! SOrry no content</p>
+        </div>`;
+        return;
+    }
+
     arrr2.forEach((video) => {
         const cardSingle = document.createElement("div");
         cardSingle.classList.add("card", "bg-base-100", "shadow-sm");
