@@ -82,7 +82,7 @@ const displayVideos = (arrr2) => {
                         </div>
                     </div>
                      <div class ="mt-4">
-                            <button class="btn btn-wide">Show Details</button>
+                            <button onclick="loadVidDeets('${video.video_id}')" class="btn btn-wide">Show Details</button>
                     </div>
 
                  </div>
@@ -107,6 +107,33 @@ const loadCatagoryVideo = (id) => {
             displayVideos(data.category);
         });
 
+};
+
+const loadVidDeets = (specificId) => {
+
+    const urll = `https://openapi.programming-hero.com/api/phero-tube/video/${specificId}`;
+
+    fetch(urll)
+        .then((response) => response.json())
+        .then((data) => displayVidDeets(data.video));
+};
+
+const displayVidDeets = (elemObj) => {
+    video_modal.showModal();
+    const modalContent = document.getElementById("customModal");
+    modalContent.innerHTML = `
+
+            <div class="card bg-base-100 image-full shadow-sm">
+                <figure>
+                    <img src="${elemObj.thumbnail}" />
+                </figure>
+                <div class="card-body">
+                     <h2 class="card-title">${elemObj.title}</h2>
+                    <p>${elemObj.description}</p>
+                </div>
+            </div>
+            
+    `;
 };
 
 const removeActivity = () => {
