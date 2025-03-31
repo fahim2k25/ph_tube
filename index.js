@@ -80,14 +80,12 @@ const displayVideos = (arrr2) => {
                             
                             <div> <img class="w-4" src="./assets/icons8-verified-48.png" </div>
                         </div>
-    
-                      
+                    </div>
+                     <div class ="mt-4">
+                            <button class="btn btn-wide">Show Details</button>
                     </div>
 
                  </div>
-
-        
-        
         
         
         `;
