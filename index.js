@@ -9,7 +9,7 @@ function loadCatagories() {
 }
 
 function displayCatagories(arrr) {
-    // 1.get the contianer
+    // 1.get the container
     const cataCont = document.getElementById("category-container");
 
     //2.Loop operation on an ARRAY of object
