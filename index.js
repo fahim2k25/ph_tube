@@ -29,9 +29,9 @@ function displayCatagories(arrr) {
 
 }
 
-const loadVideos = () => {
+const loadVideos = (keyWord = "") => {
 
-    fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+    fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${keyWord}`)
         .then(response => response.json())
         .then(data => {
             const oddBtn = document.getElementById("btn-all");
@@ -144,6 +144,12 @@ const removeActivity = () => {
     };
 
 };
+
+//search functionality
+document.getElementById("search-box").addEventListener("keyup", (keyWOrd) => {
+    const searchKeyWord = keyWOrd.target.value;
+    loadVideos(searchKeyWord);
+});
 
 //FUNCTION called by default while the page reloads
 loadCatagories();
