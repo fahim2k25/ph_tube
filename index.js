@@ -78,7 +78,7 @@ const displayVideos = (arrr2) => {
                         <div class="flex"> 
                             <p>${video.authors[0].profile_name} <br> ${video.others.views} Views </p>
                             
-                            <div> <img class="w-4" src="./assets/icons8-verified-48.png" </div>
+                            <div> ${video.authors[0].verified === true ? `<img class="w-4" src="./assets/icons8-verified-48.png"` : `<img class="w-7" src="https://img.icons8.com/?size=100&id=85083&format=png&color=000000">`} </div>
                         </div>
                     </div>
                      <div class ="mt-4">
